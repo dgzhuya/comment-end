@@ -3,16 +3,11 @@
 	"displayName": "comment-end",
 	"description": "一个用于添加后缀注释的工具",
 	"version": "1.0.0",
-	"author": {
-		"name": "dgzhuya",
-		"email": "chenbiuxiu@gmail.com"
-	},
+	"author": "dgzhuya",
 	"engines": {
 		"vscode": "^1.85.0"
 	},
-	"repository": {
-		"url": "https://github.com/dgzhuya/comment-end"
-	},
+	"repository": "https://github.com/dgzhuya/comment-end",
 	"categories": [
 		"Other"
 	],
