@@ -3,13 +3,15 @@
 	"displayName": "comment-end",
 	"description": "一个用于添加后缀注释的工具",
 	"version": "1.0.0",
-	"author": "dgzhuya",
+	"publisher": "dgzhuya",
 	"engines": {
 		"vscode": "^1.85.0"
 	},
 	"repository": "https://github.com/dgzhuya/comment-end",
 	"categories": [
-		"Other"
+		"Keymaps",
+		"Formatters",
+		"Programming Languages"
 	],
 	"icon": "assets/comment.png",
 	"activationEvents": [],
