@@ -1,3 +1,10 @@
-# comment-end README
+### comment-end README
 
-## 用于生成后缀命令
+#### 用于生成后缀注释
+
+![alt usage](./assets/usage.gif)
+
+#### 使用方式
+- 点击快捷键 Ctrl+Shift+/
+- 将会在光标所在位置添加`//`
+- 如果当前行已经存在注释,会删除`//` 
