@@ -1,6 +1,6 @@
 {
-	"name": "comment",
-	"displayName": "comment",
+	"name": "comment-end",
+	"displayName": "comment-end",
 	"description": "一个用于添加后缀注释的工具",
 	"version": "1.0.0",
 	"author": {
@@ -11,7 +11,7 @@
 		"vscode": "^1.85.0"
 	},
 	"repository": {
-		"url": ""
+		"url": "https://github.com/dgzhuya/comment-end"
 	},
 	"categories": [
 		"Other"
