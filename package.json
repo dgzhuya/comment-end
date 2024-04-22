@@ -1,8 +1,8 @@
 {
 	"name": "comment-end",
 	"displayName": "comment-end",
-	"description": "一个用于添加后缀注释的工具",
-	"version": "1.0.2",
+	"description": "一个用于添加特殊注释的工具",
+	"version": "1.1.0",
 	"publisher": "dgzhuya",
 	"engines": {
 		"vscode": "^1.85.0"
