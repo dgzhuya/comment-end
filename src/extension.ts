@@ -8,6 +8,9 @@ const findCommentPosition = (
 	if (!text.includes('//')) {
 		return
 	}
+	if (text.startsWith('/// ')) {
+		return new vscode.Range(line, 0, line, 4)
+	}
 	const tabSize = tabLine
 		? typeof tabLine === 'string'
 			? parseInt(tabLine)
@@ -27,9 +30,7 @@ const findCommentPosition = (
 		}
 		if (char === '/' && text[i + 1] === '/' && stack.length === 0) {
 			const start = text[i - 1] === ' ' ? i - 1 : i
-			console.log('start: ', start)
 			const end = text[i + 2] === ' ' ? i + 3 : i + 2
-			console.log('end: ', end)
 			return new vscode.Range(line, start, line, end)
 		}
 		if (char === '\t') {
@@ -63,9 +64,19 @@ export function activate(context: vscode.ExtensionContext) {
 					})
 				} else {
 					editor.edit(editBulder => {
-						editBulder.insert(postion, ' // ')
+						editBulder.insert(
+							postion,
+							postion.character === 0 ? '/// ' : ' // '
+						)
 					})
 				}
+			} else {
+				editor.edit(editBulder => {
+					editBulder.insert(
+						new vscode.Position(postion.line, 0),
+						'/// '
+					)
+				})
 			}
 		}
 	)
