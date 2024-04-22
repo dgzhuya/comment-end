@@ -8,16 +8,22 @@ const findCommentPosition = (
 	if (!text.includes('//')) {
 		return
 	}
-	if (text.startsWith('/// ')) {
-		return new vscode.Range(line, 0, line, 4)
-	}
 	const tabSize = tabLine
 		? typeof tabLine === 'string'
 			? parseInt(tabLine)
 			: tabLine
 		: 2
-	const len = text.length
+
+	if (text.includes('/// ')) {
+		let chars = text.trimStart()
+		let i = text.length - chars.length
+		if (chars.startsWith('///')) {
+			return new vscode.Range(line, i, line, i + 4)
+		}
+	}
+
 	let i = 0
+	const len = text.length
 	const stack: string[] = []
 	while (i < len) {
 		const char = text[i]
@@ -52,6 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 			const postion = editor.selection.active
 			const line = editor.document.lineAt(postion)
+			const emptyPos = line.text.length - line.text.trimStart().length
 			if (!line.isEmptyOrWhitespace) {
 				const range = findCommentPosition(
 					line.text,
@@ -66,14 +73,14 @@ export function activate(context: vscode.ExtensionContext) {
 					editor.edit(editBulder => {
 						editBulder.insert(
 							postion,
-							postion.character === 0 ? '/// ' : ' // '
+							emptyPos >= postion.character ? '/// ' : ' // '
 						)
 					})
 				}
 			} else {
 				editor.edit(editBulder => {
 					editBulder.insert(
-						new vscode.Position(postion.line, 0),
+						new vscode.Position(postion.line, emptyPos),
 						'/// '
 					)
 				})
